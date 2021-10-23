@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter_hw/presentation/store/chat_store.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+
+import 'message_view.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({Key? key}) : super(key: key);
@@ -9,23 +13,21 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<StatefulWidget> {
-  final String _title = 'Messages';
-  final List<String> _messages = [];
-
+  final ChatStore _chatStore = ChatStore();
   final TextEditingController _messageController = TextEditingController();
 
-  void addMessageToList(String newMessage) {
-    setState(() {
-      _messages.add(newMessage);
-    });
-    _messageController.clear();
+  @override
+  void initState() {
+    super.initState();
+
+    _chatStore.getNewMessages();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_title),
+        title: const Text('Messages'),
       ),
       body: Center(
         child: Center(
@@ -33,19 +35,22 @@ class _ChatScreenState extends State<StatefulWidget> {
             padding: const EdgeInsets.all(16),
             child: Column(
               children: [
-                Expanded(
-                    child: ListView(
-                  children: _messages.map((item) {
-                    return ListTile(
-                      title: Text(
-                        item,
-                        style: const TextStyle(
-                            color: Colors.black87,
-                            fontSize: 16,
-                            fontStyle: FontStyle.italic),
-                      ),
+                Expanded(child: Observer(
+                  builder: (context) {
+                    return ListView.builder(
+                      itemCount: _chatStore.messages.length,
+                      shrinkWrap: true,
+                      padding: const EdgeInsets.only(top: 16),
+                      physics: const BouncingScrollPhysics(
+                          parent: AlwaysScrollableScrollPhysics()),
+                      itemBuilder: (BuildContext context, int index) {
+                        return ConversationList(
+                          name: _chatStore.messages[index].author,
+                          messageText: _chatStore.messages[index].message,
+                        );
+                      },
                     );
-                  }).toList(),
+                  },
                 )),
                 Row(
                   children: [
@@ -57,7 +62,8 @@ class _ChatScreenState extends State<StatefulWidget> {
                     GestureDetector(
                       child: const Icon(Icons.send),
                       onTap: () {
-                        addMessageToList(_messageController.text);
+                        _chatStore.sendMessage(_messageController.text,
+                            onSend: () => {_messageController.clear()});
                       },
                     )
                   ],
