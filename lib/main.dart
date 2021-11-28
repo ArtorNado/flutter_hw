@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'homework_list_screen.dart';
+import 'chat/presentation/view/homework_list_screen.dart';
 
 void main() {
   runApp(const HomeworkListScreen());

@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:flutter_hw/data/api/api_client.dart';
-import 'package:flutter_hw/data/model/chat_message_element.dart';
+import 'package:flutter_hw/chat/data/api/api_client.dart';
+import 'package:flutter_hw/chat/data/model/chat_message_element.dart';
 import 'package:mobx/mobx.dart';
 
 // Include generated file

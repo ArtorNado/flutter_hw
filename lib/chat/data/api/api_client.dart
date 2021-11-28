@@ -1,4 +1,4 @@
-import 'package:flutter_hw/data/model/chat_message_element.dart';
+import 'package:flutter_hw/chat/data/model/chat_message_element.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
