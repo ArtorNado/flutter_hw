@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:flutter_hw/presentation/store/chat_store.dart';
+import 'package:flutter_hw/chat/presentation/store/chat_store.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
 import 'message_view.dart';

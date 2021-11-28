@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'chat_screen.dart';
+import 'chat/presentation/view/chat_screen.dart';
 
 const firstHomework = 'Widgets';
 const chatScreenRoute = '/chat_screen';
