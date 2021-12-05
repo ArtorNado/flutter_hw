@@ -16,9 +16,8 @@ class Gallery extends StatefulWidget {
 }
 
 class _GalleryState extends State<Gallery> {
-  List<String> mediaList = [];
 
-  //late File _image;
+  List<String> mediaList = [];
 
   @override
   void dispose() {
@@ -71,7 +70,6 @@ class _GalleryState extends State<Gallery> {
                     _addImageFromCamera();
                   },
                 ),
-                // Text('Camera');
                 IconButton(
                   icon: const Icon(Icons.image_rounded),
                   iconSize: 50,
@@ -79,7 +77,6 @@ class _GalleryState extends State<Gallery> {
                     _addImageFromGallery();
                   },
                 ),
-                // Text('Camera');
               ],
             ),
           ),
