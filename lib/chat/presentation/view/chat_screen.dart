@@ -13,14 +13,14 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<StatefulWidget> {
-  final ChatStore _chatStore = ChatStore();
+  // final ChatStore _chatStore = ChatStore();
   final TextEditingController _messageController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
 
-    _chatStore.getNewMessages();
+    // _chatStore.getNewMessages();
   }
 
   @override
@@ -38,15 +38,15 @@ class _ChatScreenState extends State<StatefulWidget> {
                 Expanded(child: Observer(
                   builder: (context) {
                     return ListView.builder(
-                      itemCount: _chatStore.messages.length,
+                      itemCount: 0,
                       shrinkWrap: true,
                       padding: const EdgeInsets.only(top: 16),
                       physics: const BouncingScrollPhysics(
                           parent: AlwaysScrollableScrollPhysics()),
                       itemBuilder: (BuildContext context, int index) {
                         return ConversationList(
-                          name: _chatStore.messages[index].author,
-                          messageText: _chatStore.messages[index].message,
+                          name: "",
+                          messageText: "",
                         );
                       },
                     );
@@ -62,8 +62,8 @@ class _ChatScreenState extends State<StatefulWidget> {
                     GestureDetector(
                       child: const Icon(Icons.send),
                       onTap: () {
-                        _chatStore.sendMessage(_messageController.text,
-                            onSend: () => {_messageController.clear()});
+                        // _chatStore.sendMessage(_messageController.text,
+                        //     onSend: () => {_messageController.clear()});
                       },
                     )
                   ],

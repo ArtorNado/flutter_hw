@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hw/gallery/gallery.dart';
+import 'package:flutter_hw/instagram_feed/pages/home_page.dart';
+import 'package:flutter_hw/instagram_feed/pages/root_page.dart';
 
 import 'chat/presentation/view/chat_screen.dart';
 
 const firstHomework = 'Widgets';
 const gallery = 'Gallery';
+const instagram = 'Instagram';
 const chatScreenRoute = '/chat_screen';
 const galleryRoute = '/gallery_screen';
+const homePageRoute = '/home_page';
 
 class HomeworkListScreen extends StatelessWidget {
   const HomeworkListScreen({Key? key}) : super(key: key);
@@ -14,13 +18,14 @@ class HomeworkListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const title = 'Homeworks';
-    final List<String> homeworks = [firstHomework, gallery];
+    final List<String> homeworks = [firstHomework, gallery, instagram];
 
     return MaterialApp(
       title: title,
       routes: {
         chatScreenRoute: (context) => const ChatScreen(),
         galleryRoute: (context) => const Gallery(),
+        homePageRoute: (context) => const RootApp(),
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -43,6 +48,9 @@ class HomeworkListScreen extends StatelessWidget {
                       break;
                     case gallery:
                       Navigator.pushNamed(context, galleryRoute);
+                      break;
+                    case instagram:
+                      Navigator.pushNamed(context, homePageRoute);
                       break;
                   }
                 },
