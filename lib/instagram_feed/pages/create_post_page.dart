@@ -92,7 +92,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
 
                     store.put('posts', Posts(posts: listOfPosts));
 
-                    Navigator.pop(context, true);
+                    Navigator.pop(context);
                   },
                   child: const Text(
                     'Create post',

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hw/instagram_feed/constant/user_item.dart';
 import 'package:flutter_hw/instagram_feed/storage/post.dart';
 import 'package:flutter_hw/instagram_feed/storage/posts.dart';
 import 'package:flutter_hw/instagram_feed/theme/colors.dart';
@@ -35,13 +36,13 @@ class _HomePageState extends State<HomePage> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          const Align(
+          Align(
             alignment: Alignment.centerLeft,
             child: Padding(
-              padding: EdgeInsets.only(left: 16, top: 16),
+              padding: const EdgeInsets.only(left: 16, top: 16),
               child: StoryItem(
-                img: "assets/images/profile_img.jpeg",
-                name: "Spongebob",
+                img: currentUser.profileImg,
+                name: currentUser.name,
               ),
             ),
           ),
